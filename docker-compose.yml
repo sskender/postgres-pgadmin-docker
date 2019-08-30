@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: postgres
+    build: .
+    ports:
+      - 5432:5432
+    networks:
+      - intranet
+    restart: always
+    volumes:
+      - db:/var/lib/postgresql/data
+    env_file:
+      - postgres.env
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - 8080:80
+    networks:
+      - intranet
+    restart: always
+    volumes:
+      - pg:/var/lib/pgadmin
+    env_file:
+      - pgadmin.env
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+volumes:
+  db:
+  pg:
+
+networks: 
+  intranet:
