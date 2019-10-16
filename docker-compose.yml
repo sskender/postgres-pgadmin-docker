@@ -3,7 +3,9 @@ version: '3'
 services:
   postgres:
     container_name: postgres
-    build: .
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
     ports:
       - 5432:5432
     networks:
@@ -11,6 +13,7 @@ services:
     restart: always
     volumes:
       - db:/var/lib/postgresql/data
+      - bkpdb:/opt/backups
     env_file:
       - postgres.env
 
@@ -33,7 +36,9 @@ services:
 
 volumes:
   db:
+  bkpdb:
   pg:
 
-networks: 
+networks:
   intranet:
+    driver: bridge
