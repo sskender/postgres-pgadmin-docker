@@ -2,7 +2,7 @@
 
 ## What is this
 
-A docker compose file for painless setup of postgresql and pgadmin panel. Run docker compose and navigate to [localhost:8080](http://localhost:8080) in your browser. Thats it!
+A docker compose file for painless setup of postgresql and pgadmin panel. Run docker compose and navigate to [localhost:8080](http://localhost:8080) in your browser. To connect to database use *localhost:5432* Thats it!
 
 ## How to use this
 
@@ -19,4 +19,4 @@ docker-compose up -d    # start
 docker-compose down     # stop
 ```
 
-Open browser and navigate to [localhost:8080](http://localhost:8080). Default values for pgadmin login are *mail@example.com* and *password123*. When adding a new server use *postgres* as host, port is default *5432*. *user* and *strongpassword* are login credentials. If you changed these values, use those instead.
+Open browser and navigate to [localhost:8080](http://localhost:8080). Default values for pgadmin login are *postgres@example.com* and *strongpassword*. When adding a new server use *postgres* as host, default port is *5432*. Login credentials are *postgres* and *strongpassword*. If you changed these values, use those instead.
