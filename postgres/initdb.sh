@@ -22,9 +22,23 @@ psql -c "ALTER SYSTEM SET max_parallel_workers_per_gather = '1';"
 psql -c "ALTER SYSTEM SET max_parallel_workers = '2';"
 
 
-# create new user
-psql -c "CREATE USER sampleuser WITH PASSWORD 'samplepassword'"
+# create user
+psql -c "CREATE USER sampleuser WITH PASSWORD 'samplepassword';"
 
 
 # create database
-psql -c "CREATE DATABASE sampledb"
+psql -c "CREATE DATABASE sampledb;"
+
+
+# access to database
+psql -c "REVOKE CONNECT ON DATABASE sampledb FROM PUBLIC;"
+psql -c "GRANT CONNECT ON DATABASE sampledb TO sampleuser;"
+
+
+# access to schema
+psql -c "REVOKE ALL ON SCHEMA public FROM PUBLIC;"
+psql -c "GRANT USAGE ON SCHEMA public TO sampleuser;"
+
+
+# access to tables
+psql -c "GRANT ALL ON ALL TABLES IN SCHEMA public TO sampleuser;"
