@@ -1,6 +1,8 @@
-version: '3'
+version: '3.3'
+
 
 services:
+
   postgres:
     container_name: postgres
     build:
@@ -34,10 +36,12 @@ services:
     links:
       - postgres
 
+
 volumes:
   db:
   bkpdb:
   pg:
+
 
 networks:
   intranet:
